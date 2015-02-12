@@ -1,0 +1,6 @@
+# proyect
+web-site/resources/bower_components
+
+# IDE
+.idea
+notas-sobre-angular-js.iml

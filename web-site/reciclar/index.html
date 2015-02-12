@@ -1,0 +1,621 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <meta charset = "UTF-8" />
+
+    <title>AngularJs -hola Guía para desarrolladores</title>
+
+    <link rel="stylesheet" href="../resources/bower_components/bootstrap/dist/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="../resources/bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../resources/bower_components/google-code-prettify/bin/prettify.min.css"/>
+    <link rel="stylesheet" href="../css/vendor/google-code-prettify/github.css"/>
+    <link rel="stylesheet" href="../css/base.css" >
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body >
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Notas sobre AngularJS</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="#"><i class="icon-group icon-white"></i> Grupo Google</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Desarrolla <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../angularjs-tutorial-un-conjunto-de-aplicaciones-sencillas.html">Tutorial - Un conjunto de aplicaciones sencillas</a></li>
+                        <li><a href="index.html">Guía para desarrolladores</a></li>
+                        <li><a href="../api.html">API</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+
+</div><!-- /.container -->
+
+<!--&lt;!&ndash; header-->
+<!--===================== &ndash;&gt;-->
+<!--<div  id="header" class="navbar navbar-inverse navbar-fixed-top">-->
+    <!--<div class="navbar-inner">-->
+        <!--<div class="container-fluid">-->
+
+            <!--<button type="button" class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="brand" href="/">AngularJs-Es</a>-->
+            <!--<div class="nav-collapse collapse" style="height: 0px; ">-->
+                <!--<ul class="nav">-->
+                    <!--<li class=""><a href="#"><i class="icon-group icon-white"></i> Grupo Google</a></li>-->
+                    <!--<li class="dropdown">-->
+                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Desarrolla <b class="caret"></b></a>-->
+                        <!--<ul class="dropdown-menu">-->
+                            <!--<li><a href="../angularjs-tutorial-un-conjunto-de-aplicaciones-sencillas.html">Tutorial - Un conjunto de aplicaciones sencillas</a></li>-->
+                            <!--<li><a href="index.html">Guía para desarrolladores</a></li>-->
+                            <!--<li><a href="../api.html">API</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!-- Content
+===================== -->
+<div id="content" class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+        <!--Sidebar content-->
+
+            <div class="well well-small">
+                <ul class="nav nav-list">
+                    <li><a href="#conceptos-generales">Conceptos Generales</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="span10">
+        <!--Body content-->
+            <div class="container-fluid">
+
+                Guía para desarrolladores
+                Bienvenido a la Guía para desarrolladores sobre AngularJs, si estas aqui para aprender los detalle de como usar AngularJs para desarrollar aplicaciones web, estas en el lugar correcto.
+
+                <section id="conceptos-generales">
+
+                    <h2>Conceptos Generales</h2>
+                    <hr>
+                    <p>Este documento ofrece una visión general de los principales componentes de angular y cómo trabajan juntos. Estos son:</p>
+
+                    <ul>
+                        <li><a href="">startup</a> (inicio) - Hola mundo.</li>
+                        <li><a href="">runtime</a>	(tiempo de ejecución) - Revisión general del tiempo de ejecución de angular.</li>
+                        <li><a href="">scope</a> (ámbito) - El pegamento entre la vista y el controlador.</li>
+                        <li><a href="">controller</a>	(controlador) -	El comportamiento de la aplicación.</li>
+                        <li><a href="">model</a> (modelo) - Los datos de la aplicación.</li>
+                        <li><a href="">view</a> (vista) - Lo que el usuario ve.</li>
+                        <li><a href="">directives</a> (directivas) - Amplia el vocabulario HTML.</li>
+                        <li><a href="">filters</a> (filtros) - Formatea la data para el usuario.</li>
+                        <li><a href="">injector</a> (injector) - Ensambla su aplicación.</li>
+                        <li><a href="">module</a> (módulo) - Configura la inyección.</li>
+                        <li><a href="">$</a> - Espacio de nombre o namespace de AngularJS.</li>
+                    </ul>
+
+                    <section id="concepts-startup">
+                        <h3>Startup (Inicio)</h3>
+                        <hr>
+                        <p>Así es como hacemos rodar la pelota (observe el siguiente diagrama y ejemplo):</p>
+
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <ol>
+                                    <li>El buscador carga el HTML y lo analiza en un DOM.</li>
+                                    <li>El navegador carga el script angular.js.</li>
+                                    <li>Angular espera por el evento DOMContentLoaded.</li>
+                                    <li>Angular busca la directiva ng-app, la cual define el ámbito o límites de la aplicación.</li>
+                                    <li>El modulo especificado en ng-app (si existe) es usado para configurar el $injector.</li>
+                                    <li>El $injector es usado para crear el servicio $copile como también $rootScope.</li>
+                                    <li>El servicio $compile es usado para compilar el DOM y enlazarlo con $rootScope.</li>
+                                    <li>La directiva ng-init asigna la palabra Mundo al nombre de la propiedad en el scope.</li>
+                                    <li class="ng-non-bindable">El {{nombre}} interpola la expresión en: Hola Mundo!</li>
+                                </ol>
+                            </div>
+                            <div class="span6">
+                                <img src="/img/concepts-startup.png">
+                            </div>
+                        </div>
+
+
+                        <h4>Código fuente:</h4>
+
+                        <ul class="nav nav-tabs" id="startup-example">
+                            <li class="active"><a href="#index-startup">index.html</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="index-startup">
+                                <pre class="prettyprint ng-non-bindable">&lt;!doctype html&gt;<br/>&lt;html ng-app&gt;<br/>  &lt;head&gt;<br/>    &lt;script src=&quot;http://code.angularjs.org/1.0.5/angular.min.js&quot;&gt;&lt;/script&gt;<br/>  &lt;/head&gt;<br/>  &lt;body&gt;<br/>    &lt;p ng-init=&quot; name='Mundo' &quot;&gt;Hola {{nombre}}!&lt;/p&gt;<br/>  &lt;/body&gt;<br/>&lt;/html&gt;</pre>
+                            </div>
+                        </div>
+
+                        <h4>Demo</h4>
+                        <div class="well well-small">
+                            <span ng-init=" nombre_startup='Mundo' ">Hola {{nombre_startup}}!</span>
+                        </div>
+
+
+                    </section>
+
+                    <section id="concepts-runtime">
+                        <h3>Runtime (Tiempo de ejecución)</h3>
+                        <hr>
+                        <p>El diagrama y el ejemplo a continuación describen cómo angular interactúa con el evento repetitivo del navegador.</p>
+
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <ol>
+                                    <li>El evento repetitivo (event-loop) del navegador espera por el arribo de un evento. Un evento es una interacción del usuario, un evento agendado, o un evento de la red (una respuesta proveniente del servidor).</li>
+                                    <li>Las retrollamadas de eventos son ejecutadas, Se ingresa el el contexto JavaScript, La retrollamada puede modificar la estructura DOM.</li>
+                                    <li>Una vez que la retrollamada es ejecutada, el navegador deja el contexto JavaScript y rehace la vista basado en los cambios del DOM.</li>
+                                </ol>
+                                <p>Angular modifica el flujo normal de JavaScript proporcionado su propia forma para procesar el evento repetitivo. Dividiendo el código JavaScript en el contexto de ejecución clásico y angular. Sólo las operaciones que son aplicadas en el contexto de ejecución de angular se beneficiarán del enlace de datos (data-binding), manejo de excepciones (exception handling), observación de propiedad (property watching), etc... También puede usar $apply() para entrar en el contexto de ejecución de angular desde JavaScript. Tenga en cuenta que en la mayoría de los lugares (controladores, servicios) $apply ya ha sido llamado para usted por la directiva que maneja el evento. Una llamada explícita a $apply es necesaria sólo cuando se implementen retrollamadas personalizadas o cuando trabajes con retrollamadas en librerías de terceros.</p>
+                            </div>
+                            <div class="span6">
+                                <img src="/img/concepts-runtime.png">
+                            </div>
+                        </div>
+
+                        <ol>
+                            <li>Entra contexto de ejecución Angular llamando scope.$apply(estimuloFn). Donde estimuloFn es el trabajo que se desea realizar en el contexto de ejecución angular.</li>
+                            <li>Angular ejecuta estimuloFn(), que normalmente modifica el estado de aplicación.</li>
+                            <li>Angular entra en el bucle $digest. El bucle se compone de dos bucles más pequeños que procesan la cola $evalAsync y la lista $watch. El bucle $digest sigue iterando hasta que el modelo se estabiliza, lo que significa que la cola $evalAsync esta vacia y la lista $watch no detecta ningún cambio.</li>
+                            <li>La cola $evalAsync es utilizada para programar el trabajo que tiene que ocurrir fuera del marco de pila actual, pero antes que el navegador muestre la vista. esto es usualmente realizado con setTimeout(0), pero el enfoque setTimeout(0) es lento y puede causar parpadeo en la vista ya que el navegador hace la vista luego de cada evento.</li>
+                            <li>La lista $watch es un conjunto de expresiones que pueden haber cambiado desde la última iteración. Si se detecta un cambio entonces la funcion $watch es llamada la cual suele actualizar el DOM con un nuevo valor.</li>
+                            <li>Una vez que el bucle $digest finaliza, la ejecución deja el contexto Angular y JavaScript. A esto le sigue el navegador re-haciendo el DOM para reflejar algún cambio.</li>
+                        </ol>
+
+                        <p>Aquí está la explicación de cómo el ejemplo Hola Mundo logra el efecto de enlace de datos cuando el usuario introduce texto en el campo de texto.</p>
+
+                        <ol>
+                            <li>Durante la fase de compilación:
+                                <ol>
+                                    <li>El ng-model y la directiva input establecen un detector keydown sobre el control &lt;input&gt;.</li>
+                                    <li class="ng-non-bindable">La interpolación {{nombre}} establece un $watch para ser notificado del los cambios de nombre.</li>
+                                </ol>
+                            </li>
+                            <li>Durante la fase de ejecución:
+                                <ol>
+                                    <li>Presionando  'X' tecla, causa que el navegador emita un evento keydown sobre el control de entrada.</li>
+                                    <li>La directiva input captura los cambios de valor de los inputs (campos) y llama $apply("nombre = 'X';")  para actualizar el modelo de la aplicación dentro del contexto de Angular.</li>
+                                    <li>Angular aplica el nombre = ''; al modelo.</li>
+                                    <li>El bucle $digest comienza.</li>
+                                    <li class="ng-non-bindable">La lista $watch detecta un cambio en la propiedad nombre y notifica la interpolación {{nombre}}, que a su vez actualiza el DOM.</li>
+                                    <li>Abandona el contexto de ejecución de Angular, que a su vez sale de el evento keydown y con ello el contexto de ejecución de de JavaScript.</li>
+                                    <li>El navegador rehace la vista con el texto actualizado.</li>
+                                </ol>
+                            </li>
+                        </ol>
+
+                        <h4>Código fuente:</h4>
+
+                        <ul class="nav nav-tabs" id="runtime-example">
+                            <li class="active"><a href="#index-runtime">index.html</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="index-runtime">
+                                <pre class="prettyprint ng-non-bindable">&lt;!doctype html&gt;<br/>&lt;html ng-app&gt;<br/>  &lt;head&gt;<br/>    &lt;script src=&quot;http://code.angularjs.org/1.0.5/angular.min.js&quot;&gt;&lt;/script&gt;<br/>  &lt;/head&gt;<br/>  &lt;body&gt;<br/>    &lt;input ng-model=&quot;nombre&quot;&gt;<br/>    &lt;p&gt;Hola {{nombre}}!&lt;/p&gt;<br/>  &lt;/body&gt;<br/>&lt;/html&gt;</pre>
+                            </div>
+                        </div>
+
+                        <h4>Demo</h4>
+
+                        <div class="well well-small">
+                            <input type="text" ng-model="nombre_runtime">
+                            <p>Hola {{nombre_runtime}}!</p>
+                        </div>
+
+                    </section>
+
+                    <section id="concepts-scope">
+                        <h3>Scope (Ámbito, Campo de aplicación, Alcance)</h3>
+                        <hr>
+                        <p>El Scope es responsable de detectar cambios en la sección del modelo y proporciona el contexto de ejecución de las expresiones. Los Scopes están anidados en una estructura jerárquica que siguen de cerca la estructura DOM. (Consulte la documentación sobre directivas para ver qué directivas causan una creación de ámbitos nuevos.)</p>
+                        <p>El siguiente ejemplo demuestra como la expresión nombre será evaluada de forma diferente dependiendo del ámbito al que pertenecen. El ejemplo es seguido por un diagrama que representa los límites de alcance o ámbito.</p>
+
+
+                        <h4>Código fuente:</h4>
+                        <ul class="nav nav-tabs" id="scope-example">
+                            <li class="active"><a href="#index-scope-example">index.html</a></li>
+                            <li><a href="#style-scope-example">style.css</a></li>
+                            <li><a href="#script-scope-example">script.js</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="index-scope-example">
+                                <pre class="prettyprint ng-non-bindable">&lt;!doctype html&gt;<br/>&lt;html ng-app&gt;<br/>  &lt;head&gt;<br/>    &lt;script src=&quot;http://code.angularjs.org/1.0.5/angular.min.js&quot;&gt;&lt;/script&gt;<br/>    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;<br/>  &lt;/head&gt;<br/>  &lt;body&gt;<br/>    &lt;div ng-controller=&quot;SaludarCtrl&quot;&gt;<br/>      Hola {{nombre}}!<br/>    &lt;/div&gt;<br/>    &lt;div ng-controller=&quot;ListadoCtrl&quot;&gt;<br/>      &lt;ol&gt;<br/>        &lt;li ng-repeat=&quot;nombre in nombres&quot;&gt;{{nombre}}&lt;/li&gt;<br/>      &lt;/ol&gt;<br/>    &lt;/div&gt;<br/>  &lt;/body&gt;<br/>&lt;/html&gt;</pre>
+                            </div>
+                            <div class="tab-pane" id="style-scope-example">
+                                <pre class="prettyprint">.show-scope .doc-example-live.ng-scope,<br/>.show-scope .doc-example-live .ng-scope  {<br/>  border: 1px solid red;<br/>  margin: 3px;<br/>}</pre>
+                            </div>
+                            <div class="tab-pane" id="script-scope-example">
+                                <pre class="prettyprint">function SaludarCtrl($scope) {<br/>  $scope.nombre = 'Mundo';<br/>}<br/> <br/>function ListadoCtrl($scope) {<br/>  $scope.nombres = ['Igor', 'Misko', 'Vojta'];<br/>}</pre>
+                            </div>
+                        </div>
+
+                        <h4>Demo</h4>
+
+                        <div class="well well-small show-scope">
+                            <div ng-controller="SaludarCtrl" class="show-scope">
+                                Hola {{nombre}}!
+                            </div>
+                            <div ng-controller="ListadoCtrl" class="show-scope">
+                                <ol>
+                                    <li class="show-scope" ng-repeat="nombre in nombres">{{nombre}}</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <p><img src="/img/concepts-scope.png"></p>
+
+                    </section>
+
+                    <section id="concepts-controller">
+                        <h3>Controller (Controlador)</h3>
+                        <hr>
+
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <p>Un controlador es el código detrás de la vista. Su trabajo es construir el modelo y publicarlo en la vista junto con las retrollamadas. La vista es una proyección de elámbitoo en la plantilla (el HTML). El ámbito es el pegamento que reúne el modelo a la vista y envía los eventos al controlador.</p>
+                                <p>La separación del controlador y la vista es importante porque:</p>
+                                <ul>
+                                    <li>El controlador está escrito en javascript. javascript es imperativo. Imperativo es una buena opción para especificar el comportamiento de la aplicación. El controlador no debe contener ninguna información de representación (referencias DOM o fragmentos HTML).</li>
+                                    <li>La plantilla de vista está escrita en HTML. HTML es declarativo, Declarativa es una buena opción para especificar la interfaz de usuario. La vista no debería contener ningún comportamiento.</li>
+                                    <li>Puesto que el controlador no tiene conocimiento de la vista, Puede haber muchas vistas para el mismo controlador. Esto es importante para rehacer las vistas para los diferentes dispositivos por ejemplo teléfonos inteligentes y escritorios además de la capacidad de prueba.</li>
+                                </ul>
+                            </div>
+                            <div class="span6">
+                                <img src="/img/concepts-controller.png">
+                            </div>
+                        </div>
+
+                        <h4>Código fuente:</h4>
+                        <ul class="nav nav-tabs" id="controller-example">
+                            <li class="active"><a href="#index-controller-example">index.html</a></li>
+                            <li><a href="#script-controller-example">script.js</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="index-controller-example">
+                                <pre class="prettyprint ng-non-bindable">&lt;!doctype html&gt;<br/>&lt;html ng-app&gt;<br/>  &lt;head&gt;<br/>    &lt;script src=&quot;http://code.angularjs.org/1.0.5/angular.min.js&quot;&gt;&lt;/script&gt;<br/>    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;<br/>  &lt;/head&gt;<br/>  &lt;body&gt;<br/>    &lt;div ng-controller=&quot;MiCtrl&quot;&gt;<br/>      Hola {{nombre}}!<br/>      &lt;button ng-click=&quot;metodo()&quot;&gt;<br/>      	OK<br/>      &lt;/button&gt;<br/>    &lt;/div&gt;<br/>  &lt;/body&gt;<br/>&lt;/html&gt;</pre>
+                            </div>
+                            <div class="tab-pane" id="script-controller-example">
+                                <pre class="prettyprint">// Controlador <br/>function MiCtrl($scope) {<br/>	<br/>	// Metodo<br/>	$scope.metodo = function() {<br/>		$scope.nombre = 'OK';<br/>	}<br/> <br/>	// Propiedad<br/>	$scope.nombre = 'Mundo';<br/><br/>}</pre>
+                            </div>
+                        </div>
+
+                        <h4>Demo</h4>
+
+                        <div class="well well-small">
+                            <div ng-controller="MiCtrl">
+                                Hola {{nombre}}!
+                                <button ng-click="metodo()">
+                                    OK
+                                </button>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <section id="concepts-model">
+                        <h3>Model (Modelo)</h3>
+                        <hr>
+
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <p>El modelo es la data que es usada funcionada con la plantilla para producir la vista, para ser capaz de mostrar el modelo en la vista, el modelo tiene que ser capaz de ser referenciado desde el ámbito o scope. A diferencia de muchos otros marcos angular no crea restricciones o requisitos en el modelo. No hay clases para heredar o especiales métodos ancestros para acceder o cambiar el modelo. El modelo puede ser primitivo, objeto hash, o un objeto completo. En resumen, el modelo es un simple objeto JavaScript.</p>
+                            </div>
+                            <div class="span6">
+                                <img src="/img/concepts-model.png">
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section id="concepts-view">
+                        <h3>View (Vista)</h3>
+                        <hr>
+
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <p>La vista es lo que usuario ve. La vista comienza su vida como una plantilla, se funciona con el modelo y finalmente se muestra en el DOM. Angular tiene un enfoque muy diferente para mostrar la vista en comparación con la mayoria de sistema de plantillas.</p>
+                                <ul>
+                                    <li><b>Otros -</b> La mayoría de los sistemas de plantillas comienzan como una cadena HTML con un especial marcado. A menudo, el formato de plantilla rompe la sintaxis HTML lo que significa que la plantilla no se puede editar con el editor HTML. La cadena es analizada por el motor de plantillas, y se combina con los datos. El resultado de la fusión es una cadena HTML. La cadena HTML se escribe en el navegador utilizando el innerHTML, que causa que el navegador muestre el HTML. Cuando el modelo cambia todo el proceso debe ser repetido. La granularidad de la plantilla es la granularidad de las actualizaciones de DOM. La clave aquí es que el sistema de plantillas manipula cadenas.</li>
+                                    <li><b>Angular -</b> Angular es diferente, ya que su sistema de plantillas funciona en objetos DOM no en cadenas. La plantilla se sigue escribiendo en una cadena HTML, pero es HTML (no HTML con un especial marcado) El navegador analiza el código HTML en el DOM, y el DOM se convierte en la entrada del motor plantilla conocida como compilador (compiler). El compilador busca directivas a la vez que establece observadores en el modelo, El resultado es una continua actualización de la vista que no necesita de un modelo de sistema de plantillas que vuelva a funcionar el HTML con un especial marcado. Su modelo se convierte en la única fuente verdadera para su vista.</li>
+                                </ul>
+                            </div>
+                            <div class="span6">
+                                <img src="/img/concepts-view.png">
+                            </div>
+                        </div>
+
+
+                        <h4>Código fuente:</h4>
+
+                        <ul class="nav nav-tabs" id="view-example">
+                            <li class="active"><a href="#index-view">index.html</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="index-view">
+                                <pre class="prettyprint ng-non-bindable">&lt;!doctype html&gt;<br/>&lt;html ng-app&gt;<br/>  &lt;head&gt;<br/>    &lt;script src=&quot;http://code.angularjs.org/1.0.5/angular.min.js&quot;&gt;&lt;/script&gt;<br/>  &lt;/head&gt;<br/>  &lt;body&gt;<br/>    &lt;div ng-init=&quot;lista = ['Chrome', 'Safari', 'Firefox', 'IE'] &quot;&gt;<br/>      &lt;input ng-model=&quot;lista&quot; ng-list&gt; &lt;br&gt;<br/>      &lt;input ng-model=&quot;lista&quot; ng-list&gt; &lt;br&gt;<br/>      &lt;pre&gt;lista={{lista}}&lt;/pre&gt; &lt;br&gt;<br/>      &lt;ol&gt;<br/>        &lt;li ng-repeat=&quot;elemento in lista&quot;&gt;<br/>          {{elemento}}<br/>        &lt;/li&gt;<br/>      &lt;/ol&gt;<br/>    &lt;/div&gt;<br/>  &lt;/body&gt;<br/>&lt;/html&gt;</pre>
+                            </div>
+                        </div>
+
+                        <h4>Demo</h4>
+
+                        <div class="well well-small">
+                            <div ng-init="lista = ['Chrome', 'Safari', 'Firefox', 'IE']">
+                               <p><input type="text" ng-model="lista" ng-list></p>
+                               <p><input type="text" ng-model="lista" ng-list></p>
+
+                               <pre>lista={{lista}}</pre> <br>
+                               <ol>
+                                   <li ng-repeat="elemento in lista">
+                                       {{elemento}}
+                                   </li>
+                               </ol>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <section>
+                        <h3>Directives (Directivas)</h3>
+                        <hr>
+                        <p>Directivas es un comportamiento o una transformación DOM que se activa por la presencia de un atributo personalizado, nombre del elemento, o un nombre de clase. Una directiva permite extender el vocabulario HTML de una manera declarativa. A continuación se presenta un ejemplo que permite el enlace de datos para el contenidoEditable en HTML:</p>
+
+                    </section>
+
+                    <section>
+                        <h3>Filters (Filtros)</h3>
+                        <hr>
+
+                        <p>Los filtros realizar la transformación de los datos. Típicamente se utiliza en conjunción con la configuración regional para formatear los datos de salida en una configuración regional específica. Ellos siguen el espíritu de los filtros UNIX y usan una sintaxis similar  | (tubo).</p>
+
+                        <h4>Código fuente:</h4>
+
+                        <ul class="nav nav-tabs" id="filters-example">
+                            <li class="active"><a href="#index-filters">index.html</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="index-filters">
+                                <pre class="prettyprint ng-non-bindable">&lt;!doctype html&gt;<br/>&lt;html ng-app&gt;<br/>&lt;head&gt;<br/>	&lt;script src=&quot;http://code.angularjs.org/1.0.5/angular.min.js&quot;&gt;&lt;/script&gt;<br/>&lt;/head&gt;<br/>&lt;body&gt;<br/>	&lt;h5&gt;Formateo de n&uacute;mero:&lt;/h5&gt;<br/>	{{ 1234567890 | number }}<br/><br/>	&lt;h5&gt;Filtrado de Array:&lt;/h5&gt;<br/>	&lt;div ng-init=&quot;list = ['Chrome', 'Safari', 'Firefox', 'IE'] &quot;&gt;<br/>		&lt;input ng-model=&quot;predicado&quot;&gt; {{ list | filter:predicado | json }}<br/>	&lt;/div&gt;<br/>&lt;/body&gt;<br/>&lt;/html&gt;</pre>
+                            </div>
+                        </div>
+
+
+                        <h4>Demo</h4>
+                        <div class="well well-small">
+                            <h5>Formateo de número:</h5>
+                            {{ 1234567890 | number }}
+
+                            <h5>Filtrado de Array:</h5>
+                            <div ng-init="list = ['Chrome', 'Safari', 'Firefox', 'IE'] ">
+                                <input type="text" ng-model="predicado"> {{ list | filter:predicado | json }}
+                            </div>
+                        </div>
+
+
+
+
+                    </section>
+
+                    <section>
+                        <h3>Modules and the Injector (Módulos y el Inyector)</h3>
+                        <hr>
+
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <p>El inyector es un servicio de localización. Hay un solo inyector por una aplicación angular. El injector provee una forma para mirar un objeto instanciado por su nombre. El injector mantiene una caché interna de todo los objetos a fin de que las redundante solicitudes para obtener el mismo objeto resulte en la misma instancia. Si el objeto no existe, Entonces el injector solicita al la fábrica de instancias que crea una nueva instancia.</p>
+                                <p>Un módulo es la forma de configurar la fábrica de instancias de Inyectores. conocido como un proveedor.</p>
+                            </div>
+                            <div class="span6">
+                                <img src="/img/concepts-module-injector.png">
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <pre class="prettyprint ng-non-bindable">// Create a module<br/>var myModule = angular.module('myModule', [])<br/> <br/>// Configure the injector<br/>myModule.factory('serviceA', function() {<br/>  return {<br/>    // instead of {}, put your object creation here<br/>  };<br/>});<br/> <br/>// create an injector and configure it from 'myModule'<br/>var $injector = angular.injector(['myModule']);<br/> <br/>// retrieve an object from the injector by name<br/>var serviceA = $injector.get('serviceA');<br/> <br/>// always true because of instance cache<br/>$injector.get('serviceA') === $injector.get('serviceA');</pre>
+
+                        <p>Pero la real magia del Inyector es que puede ser utilizado para llamar métodos y tipos de instancias.  Esta característica sutil es la que permite los métodos y tipos de solicitar sus dependencias en lugar de tener que buscarlos.</p>
+
+                        <pre class="prettyprint ng-non-bindable" >// You write functions such as this one.<br/>function doSomething(serviceA, serviceB) {<br/>  // do something here.<br/>}<br/> <br/>// Angular provides the injector for your application<br/>var $injector = ...;<br/> <br/>///////////////////////////////////////////////<br/>// the old-school way of getting dependencies.<br/>var serviceA = $injector.get('serviceA');<br/>var serviceB = $injector.get('serviceB');<br/> <br/>// now call the function<br/>doSomething(serviceA, serviceB);<br/> <br/>///////////////////////////////////////////////<br/>// the cool way of getting dependencies.<br/>// the $injector will supply the arguments to the function automatically<br/>$injector.invoke(doSomething); // This is how the framework calls your functions</pre>
+
+                        <p>Observe que lo único que necesitaba era escribir la función y la lista de dependencias en los argumentos de la función. Cuando angular llama la función, utiliza la solicitud para automáticamente llenar los argumentos de la función.</p>
+
+                        <p>Examine el controlador ClockCtrl a continuación y observe como se enumeran las dependencias en el constructor. cuando el ng-controller instancias el controlador automáticamente provee las dependencias.  no hay necesidad de crear dependencias,  buscarlas o incluso conseguir una referencia al inyector.</p>
+
+
+
+                        <h4>Código fuente:</h4>
+
+                        <ul class="nav nav-tabs" id="module-injector-example">
+                            <li class="active"><a href="#index-module-injector">index.html</a></li>
+                            <li ><a href="#script-module-injector">script.js</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="index-module-injector">
+                                <pre class="prettyprint ng-non-bindable">&lt;!doctype html&gt;<br/>&lt;html ng-app=&quot;timeExampleModule&quot;&gt;<br/>  &lt;head&gt;<br/>    &lt;script src=&quot;http://code.angularjs.org/1.0.5/angular.min.js&quot;&gt;&lt;/script&gt;<br/>    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;<br/>  &lt;/head&gt;<br/>  &lt;body&gt;<br/>    &lt;div ng-controller=&quot;ClockCtrl&quot;&gt;<br/>      Current time is: {{ time.now }}<br/>    &lt;/div&gt;<br/>  &lt;/body&gt;<br/>&lt;/html&gt;</pre>
+                            </div>
+                            <div class="tab-pane" id="script-module-injector">
+                                <pre class="prettyprint">angular.module('timeExampleModule', []).<br/>  // Declare new object called time,<br/>  // which will be available for injection<br/>  factory('time', function($timeout) {<br/>    var time = {};<br/> <br/>    (function tick() {<br/>      time.now = new Date().toString();<br/>      $timeout(tick, 1000);<br/>    })();<br/>    return time;<br/>  });<br/> <br/>// Notice that you can simply ask for time<br/>// and it will be provided. No need to look for it.<br/>function ClockCtrl($scope, time) {<br/>  $scope.time = time;<br/>}</pre>
+                            </div>
+                        </div>
+
+                        <h4>Demo</h4>
+                        <div class="well well-small">
+                        </div>
+
+                        <!--
+                        <div class="well doc-example-live ng-scope" ng-embed-app="timeExampleModule">
+                            <div ng-controller="ClockCtrl" class="ng-scope ng-binding">
+                                Current time is: Mon Mar 11 2013 21:05:52 GMT-0430 (VET)
+                            </div>
+                        </div>
+
+                        <div class="well doc-example-live ng-scope" ng-embed-app="timeExampleModule" ng-set-html="index.html-29" ng-eval-javascript="script.js-30">
+                            <div ng-controller="ClockCtrl" class="ng-scope ng-binding">
+                                  Current time is: Mon Mar 11 2013 21:09:02 GMT-0430 (VET)
+                            </div>
+                        </div>
+                        -->
+
+                    </section>
+
+                    <section>
+                        <h3>NameSpace  Angular Espacio de nombre</h3>
+                        <hr>
+                        <p>Para prevenir una accidentar colisión de nombre,  angular estable un prefijo a los nombre de los objetos que potencialmente podrían colisionar con $. Por favor no use el símbolo $ como prefijo en su código ya que accidentalmente puede colisionar con código Angular.</p>
+                    </section>
+
+
+                </section>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<pre class="prettyprint"><div class="ng-non-bindable"></div></pre>
+-->
+
+<!-- footer
+===================== -->
+<div id="footer" style="text-align: center;">
+    AngularJS-Es
+</div>
+
+<!-- las librerías jquery y bootstrap completas son requeridas para que el actual tema sea responsable en cuanto al diseño  -->
+<script type="text/javascript" src="../resources/bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../resources/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../resources/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="../resources/bower_components/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="../resources/bower_components/underscore/underscore.js"></script>
+<script type="text/javascript" src="../resources/bower_components/google-code-prettify/bin/prettify.min.js"></script>
+
+<script type="text/javascript">
+    prettyPrint();
+
+    var tabs = ['scope-example','controller-example','directives-example','module-injector-example'];
+
+    $(tabs).each(function(index,tab_id){
+        $('#'+tab_id+' a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    });
+
+
+    function SaludarCtrl($scope) {
+        $scope.nombre = 'Mundo';
+    }
+
+    function ListadoCtrl($scope) {
+        $scope.nombres = ['Igor', 'Misko', 'Vojta'];
+    }
+
+    function MiCtrl($scope) {
+
+        // Metodo
+        $scope.metodo = function() {
+            $scope.nombre = 'OK';
+        };
+
+        // Propiedad
+        $scope.nombre = 'Mundo';
+
+    }
+
+    angular.module('timeExampleModule', []).
+        // Declare new object called time,
+        // which will be available for injection
+            factory('time', function($timeout) {
+                var time = {};
+
+                (function tick() {
+                    time.now = new Date().toString();
+                    $timeout(tick, 1000);
+                })();
+                return time;
+            });
+
+    // Notice that you can simply ask for time
+    // and it will be provided. No need to look for it.
+    function ClockCtrl($scope, time) {
+        $scope.time = time;
+    }
+
+    /*
+    angular.module('directive', []).directive('contenteditable', function() {
+        return {
+            require: 'ngModel',
+            link: function(scope, elm, attrs, ctrl) {
+                // view -> model
+                elm.bind('blur', function() {
+                    scope.$apply(function() {
+                        ctrl.$setViewValue(elm.html());
+                    });
+                });
+
+                // model -> view
+                ctrl.$render = function(value) {
+                    elm.html(value);
+                };
+
+                // load init value from DOM
+                ctrl.$setViewValue(elm.html());
+            }
+        };
+    });
+
+    */
+
+</script>
+</body>
+</html>
