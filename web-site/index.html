@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.css" media="screen">
     <link rel="stylesheet" href="resources/bower_components/google-code-prettify/bin/prettify.min.css"/>
-    <link rel="stylesheet" href="resources/bower_components/color-themes-for-google-code-prettify/build/assets/css/themes/github.css"/>
+    <link rel="stylesheet" href="resources/bower_components/color-themes-for-google-code-prettify-custom/build/assets/css/themes/github.css"/>
     <link rel="stylesheet" href="resources/app/css/base.css">
 
 </head>
@@ -272,7 +272,7 @@
                     <h5>Explicando las directivas:</h5>
                     <ol>
                         <li>La directiva <span class="label label-info">ng-controller</span> se define el nombre del controlador que va trabajar sobre el ámbito de todo el elemento. Por convención el nombre del controlador debe ser UpperCamelCase y teminar en Ctrl.</li>
-                        <li>La directiva <span class="label label-info">ng-repeat</span> repite todo el ámbito del elemento donde sea colocado, entre comillas esta la definición del initerador <code>"imagen in app_images"</code> donde <code>app_images</code> es el array completo
+                        <li>La directiva <span class="label label-info">ng-repeat</span> repite todo el ámbito del elemento donde sea colocado, entre comillas esta la definición del iterador <code>"imagen in app_images"</code> donde <code>app_images</code> es el array completo
                             que contiene todo los objetos, <code>imagen</code> para cada ciclo se le asignara un objeto del array, donde podras usar <code>imagen.id, imagen.titulo, imagen.name, imagen.otro_valor</code> aciendo saber que deben estar entre <code class="ng-non-bindable">{{}}</code> para que AngularJs
                             los reconozca, <code class="ng-non-bindable">{{imagen.id}}, {{imagen.titulo}}, {{imagen.name}}, {{imagen.otro_valor}}</code>.
                         </li>
@@ -286,19 +286,28 @@
                     <div ng-controller="TaskController">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Tareas por completar: {{taskListLength()}}</h3>
+                                <h3 class="panel-title">Tareas por completar: {{taskListLeft()}} de {{taskListTotal()}}</h3>
                             </div>
                             <div class="panel-body">
 
-                                <ul class="unstyled">
-                                    <li ng-repeat="task in taskList">
-                                        <label class="checkbox">
-                                            <input type="checkbox" ng-model="task.status">  <span class="completed-{{task.status}}" >{{task.text}}</span>
-                                        </label>
-                                    </li>
-                                </ul>
 
-                                <hr>
+
+                                <div class="table-responsive" ng-hide="!taskListTotal()">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 30px;"><input type="checkbox" ng-model="tasks.checkboxs" ng-click="checkOrUncheckTasks(tasks.checkboxs)"/></th>
+                                                <th>Tarea</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="task in getDefaultTaskList()">
+                                                <th scope="row"><input type="checkbox" ng-model="task.status" ng-click="tasks.checkboxs = false"></th>
+                                                <td><span class="completed-{{task.status}}" >{{task.text}}</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 <form class="form-inline">
                                     <div class="form-group">
