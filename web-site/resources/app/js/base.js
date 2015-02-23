@@ -46,6 +46,9 @@ angular.module("Task",['angular-underscore/filters'])
                         tasks = _.filter(tasks,function(task){
                             return !task.status;
                         });
+                    },
+                    'hasValidLength': function () {
+//                        return false |
                     }
                 }
             }
@@ -79,6 +82,8 @@ angular.module("App",['Task'])
     .controller("TasksController",['$scope','$log','tasks',function($scope,$log,tasks){
 
         $scope.tasks = {
+            'task':'',
+            'allStatus':false,
             'add':function(){
                 tasks.add($scope.tasks.task);
                 $scope.tasks.task = '';
@@ -93,7 +98,8 @@ angular.module("App",['Task'])
                 return tasks.length();
             },
             'delete':function(){
-                return tasks.delete()
+                $scope.tasks.allStatus = false;
+                return tasks.delete();
             },
             'changeAllStatus':function(status){
                 tasks.changeAllStatus(status)

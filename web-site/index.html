@@ -284,16 +284,12 @@
                     <h6>La vista generada:</h6>
 
                     <div ng-controller="TasksController">
-
                         <div class="alert alert-danger" > {{tasks.get()}} </div>
-
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Tareas por completar: {{tasks.left()}} de {{tasks.length()}}</h3>
                             </div>
                             <div class="panel-body">
-
-
                                 <div class="table-responsive" ng-hide="!tasks.length()">
                                     <table class="table table-bordered">
                                         <thead>
@@ -310,7 +306,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                                 <form class="form-inline">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -318,9 +313,8 @@
                                             <input type="text" class="form-control" ng-model="tasks.task" placeholder="Eje: Estudiar JAVA">
                                         </div>
                                     </div>
-                                    <button ng-click="tasks.add()" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Anotar Tarea</button>
+                                    <button ng-click="tasks.add()" ng-disabled="tasks.task.length <= 3" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Anotar Tarea</button>
                                     <button ng-click="tasks.delete()" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remover las tareas completadas</button>
-
                                 </form>
 
                             </div>
@@ -330,7 +324,6 @@
                     <h6>El código generado:</h6>
 
                     <pre class="prettyprint ng-non-bindable">&lt;div ng-controller=&quot;TareasCtrl&quot; class=&quot;ng-scope ng-binding&quot;&gt;<br/>	&lt;span&gt;Lista de tareas:&lt;/span&gt; 5<br/>	&lt;hr&gt;<br/><br/>	&lt;ul class=&quot;unstyled&quot;&gt;<br/>		&lt;!-- ngRepeat: tarea in listaDeTareas --&gt;<br/>		&lt;li ng-repeat=&quot;tarea in listaDeTareas&quot; class=&quot;ng-scope&quot;&gt;<br/>			&lt;label class=&quot;checkbox&quot;&gt;<br/>				&lt;input type=&quot;checkbox&quot; ng-model=&quot;tarea.estado&quot; class=&quot;ng-pristine ng-valid&quot;&gt;  &lt;span class=&quot;estado-false&quot;&gt;Aprender Angular&lt;/span&gt;<br/>			&lt;/label&gt;<br/>		&lt;/li&gt;<br/>		&lt;li ng-repeat=&quot;tarea in listaDeTareas&quot; class=&quot;ng-scope&quot;&gt;<br/>			&lt;label class=&quot;checkbox&quot;&gt;<br/>				&lt;input type=&quot;checkbox&quot; ng-model=&quot;tarea.estado&quot; class=&quot;ng-pristine ng-valid&quot;&gt;  &lt;span class=&quot;estado-false&quot;&gt;Estudiar F&iacute;sica&lt;/span&gt;<br/>			&lt;/label&gt;<br/>		&lt;/li&gt;<br/>		&lt;li ng-repeat=&quot;tarea in listaDeTareas&quot; class=&quot;ng-scope&quot;&gt;<br/>			&lt;label class=&quot;checkbox&quot;&gt;<br/>				&lt;input type=&quot;checkbox&quot; ng-model=&quot;tarea.estado&quot; class=&quot;ng-pristine ng-valid&quot;&gt;  &lt;span class=&quot;estado-false&quot;&gt;Estudiar Matem&aacute;tica&lt;/span&gt;<br/>			&lt;/label&gt;<br/>		&lt;/li&gt;<br/>		&lt;li ng-repeat=&quot;tarea in listaDeTareas&quot; class=&quot;ng-scope&quot;&gt;<br/>			&lt;label class=&quot;checkbox&quot;&gt;<br/>				&lt;input type=&quot;checkbox&quot; ng-model=&quot;tarea.estado&quot; class=&quot;ng-pristine ng-valid&quot;&gt;  &lt;span class=&quot;estado-true&quot;&gt;Comer&lt;/span&gt;<br/>			&lt;/label&gt;<br/>		&lt;/li&gt;<br/>		&lt;li ng-repeat=&quot;tarea in listaDeTareas&quot; class=&quot;ng-scope&quot;&gt;<br/>			&lt;label class=&quot;checkbox&quot;&gt;<br/>				&lt;input type=&quot;checkbox&quot; ng-model=&quot;tarea.estado&quot; class=&quot;ng-pristine ng-valid&quot;&gt;  &lt;span class=&quot;estado-true&quot;&gt;Ver el correo&lt;/span&gt;<br/>			&lt;/label&gt;<br/>		&lt;/li&gt;<br/>	&lt;/ul&gt;<br/><br/>	&lt;hr&gt;<br/>	<br/>	&lt;form class=&quot;form-inline ng-pristine ng-valid&quot;&gt;<br/>		&lt;div class=&quot;input-prepend&quot;&gt;<br/>			&lt;span class=&quot;add-on&quot;&gt;&lt;i class=&quot;icon-plus&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;input ng-model=&quot;tarea&quot; id=&quot;task&quot; name=&quot;task&quot; type=&quot;text&quot; placeholder=&quot;Eje: Estudiar Matematica&quot; class=&quot;ng-pristine ng-valid&quot;&gt;<br/>		&lt;/div&gt;<br/>		&lt;button ng-click=&quot;anadir_tarea()&quot; class=&quot;btn&quot;&gt;Anotar Tarea&lt;/button&gt;<br/>	&lt;/form&gt;<br/><br/>	&lt;button ng-click=&quot;remover_tarea()&quot; type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;&lt;i class=&quot;icon-warning-sign&quot;&gt;&lt;/i&gt; Remover las tareas completadas&lt;/button&gt;<br/>&lt;/div&gt;</pre>
-
 
                 </section>
 
