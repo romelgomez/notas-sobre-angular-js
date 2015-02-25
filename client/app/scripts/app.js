@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name notasSobreAngularJs2App
+ * @name notas-sobre-angular-js
  * @description
- * # notasSobreAngularJs2App
+ * # notas-sobre-angular-js
  *
  * Main module of the application.
  */
