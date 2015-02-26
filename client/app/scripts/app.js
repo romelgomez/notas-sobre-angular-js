@@ -2,16 +2,18 @@
 
 /**
  * @ngdoc overview
- * @name notas-sobre-angular-js
+ * @name clientApp
  * @description
- * # notas-sobre-angular-js
+ * # clientApp
  *
  * Main module of the application.
  */
 angular
-  .module('notasSobreAngularJs2App', [
+  .module('clientApp', [
     'ngAnimate',
+    'ngAria',
     'ngCookies',
+    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
