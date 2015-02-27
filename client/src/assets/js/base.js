@@ -58,7 +58,7 @@ angular.module("Task",['angular-underscore/filters'])
 
 
 angular.module("App",['Task'])
-    .controller("ImagesController",function($scope){
+    .controller("ImagesController",['$scope',function($scope){
 
         $scope.images = [
             {
@@ -78,7 +78,7 @@ angular.module("App",['Task'])
             }
         ];
 
-    })
+    }])
     .controller("TasksController",['$scope','$log','tasks',function($scope,$log,tasks){
 
         $scope.tasks = {

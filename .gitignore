@@ -1,5 +1,5 @@
 # proyect
-web-site/resources/bower_components
+client/src/bower_components
 
 # IDE
 .idea
