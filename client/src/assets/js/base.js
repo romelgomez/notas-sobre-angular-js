@@ -54,31 +54,7 @@ angular.module("Task",['angular-underscore/filters'])
             }
         }
 
-    });
-
-
-angular.module("App",['Task'])
-    .controller("ImagesController",['$scope',function($scope){
-
-        $scope.images = [
-            {
-                id:1,
-                title:"Imagen 1",
-                name:"1.png"
-            },
-            {
-                id:2,
-                title:"Imagen 2",
-                name:"2.png"
-            },
-            {
-                id:3,
-                title:"Imagen 3",
-                name:"3.png"
-            }
-        ];
-
-    }])
+    })
     .controller("TasksController",['$scope','$log','tasks',function($scope,$log,tasks){
 
         $scope.tasks = {
@@ -117,5 +93,29 @@ angular.module("App",['Task'])
         //
         //    return validLength;
         //};
+
+    }]);
+
+
+angular.module("App",['Task'])
+    .controller("ImagesController",['$scope',function($scope){
+
+        $scope.images = [
+            {
+                id:1,
+                title:"Imagen 1",
+                name:"1.png"
+            },
+            {
+                id:2,
+                title:"Imagen 2",
+                name:"2.png"
+            },
+            {
+                id:3,
+                title:"Imagen 3",
+                name:"3.png"
+            }
+        ];
 
     }]);
