@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module("Task",['angular-underscore/filters'])
     .provider('tasks',function(){
 
@@ -96,9 +98,41 @@ angular.module("Task",['angular-underscore/filters'])
 
     }]);
 
+angular.module('routes',['ui.router','Task'])
+    .config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider,$stateProvider){
 
-angular.module("App",['Task'])
-    .controller("ImagesController",['$scope',function($scope){
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+            .state('home',{
+                url:'/',
+                templateUrl:'views/home.html'
+            })
+            .state('about',{
+                url:'/about',
+                templateUrl:'views/about.html'
+            })
+            .state('contact',{
+                url:'/contact',
+                templateUrl:'views/contact.html'
+            })
+            .state('gettingStarted',{
+                url:'/getting-started',
+                templateUrl:'views/getting-started.html'
+            })
+            .state('ngRepeatExample',{
+                url:'/ng-repeat-example',
+                templateUrl:'views/ng-repeat-example.html',
+                controller:'ngRepeatExample'
+            })
+            .state('toDoExample',{
+                url:'/to-do-example',
+                templateUrl:'views/to-do-example.html',
+                controller:'TasksController'
+            });
+
+    }])
+    .controller('ngRepeatExample',['$scope',function($scope){
 
         $scope.images = [
             {
@@ -119,3 +153,7 @@ angular.module("App",['Task'])
         ];
 
     }]);
+
+angular.module('app',['routes']);
+
+//prettyPrint();

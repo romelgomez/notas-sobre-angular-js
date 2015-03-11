@@ -1,0 +1,69 @@
+<h3>Aplicación: Iterar un array de objetos.</h3>
+<p > Directivas usadas: <span class="label label-info">ng-controller</span> <span class="label label-info">ng-repeat</span> </p>
+<hr>
+
+<blockquote>
+    <p style="font-size: 14px;">Vamos a iterar un objeto definido en el cliente para mostrar las imágenes de una galería.</p>
+</blockquote>
+
+<p>Para cada imagen están definidos los siguientes datos:</p>
+
+<table class="table table-bordered table-striped" style="width: 500px;">
+    <thead>
+    <tr>
+        <th>Campo</th>
+        <th>descripción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td>Numero de identificación</td>
+    </tr>
+    <tr>
+        <td>titulo</td>
+        <td>Titulo descriptivo</td>
+    </tr>
+    <tr>
+        <td>nombre</td>
+        <td>Nombre de la imagen</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<h6>El código escrito:</h6>
+
+<pre class="prettyprint ng-non-bindable">&lt;script type=&quot;text/javascript&quot;&gt;<br/>	var imagenes = [<br/>		{<br/>			id:1,<br/>			titulo:&quot;Imagen 1&quot;,<br/>			name:&quot;1.png&quot;<br/>		},<br/>		{<br/>			id:2,<br/>			titulo:&quot;Imagen 2&quot;,<br/>			name:&quot;2.png&quot;<br/>		},<br/>		{<br/>			id:3,<br/>			titulo:&quot;Imagen 3&quot;,<br/>			name:&quot;3.png&quot;<br/>		}<br/>	];<br/><br/>	var ImagenesCtrl = function ($scope) {<br/>		$scope.app_images = imagenes;<br/>	};<br/>&lt;/script&gt;<br/><br/>&lt;div ng-controller=&quot;ImagenesCtrl&quot;&gt;<br/>	&lt;ul class=&quot;thumbnails&quot;&gt;<br/>		&lt;li id=&quot;imagen-id-{{imagen.id}}&quot; ng-repeat=&quot;imagen in app_images&quot; class=&quot;span4&quot;&gt;<br/>			&lt;a href=&quot;#&quot; class=&quot;thumbnail&quot;&gt;<br/>				&lt;img alt=&quot;{{imagen.titulo}}&quot; src=&quot;/img/{{imagen.name}}&quot;&gt;<br/>			&lt;/a&gt;<br/>		&lt;/li&gt;<br/>	&lt;/ul&gt;<br/>&lt;/div&gt;</pre>
+
+<h5>Explicando las directivas:</h5>
+
+<ol>
+    <li>La directiva <span class="label label-info">ng-controller</span> se define el nombre del controlador que va trabajar sobre el ámbito de todo el elemento. Por convención el nombre del controlador debe ser UpperCamelCase y teminar en Ctrl.</li>
+    <li>La directiva <span class="label label-info">ng-repeat</span> repite todo el ámbito del elemento donde sea colocado, entre comillas esta la definición del iterador <code>"imagen in app_images"</code> donde <code>app_images</code> es el array completo
+        que contiene todo los objetos, <code>imagen</code> para cada ciclo se le asignara un objeto del array, donde podras usar <code>imagen.id, imagen.titulo, imagen.name, imagen.otro_valor</code> aciendo saber que deben estar entre <code class="ng-non-bindable">{{}}</code> para que AngularJs
+        los reconozca, <code class="ng-non-bindable">{{imagen.id}}, {{imagen.titulo}}, {{imagen.name}}, {{imagen.otro_valor}}</code>.
+    </li>
+</ol>
+
+<h5>El resultado: </h5>
+
+<h6>La vista generada:</h6>
+
+<div class="well well-small">
+    <div ng-controller="ngRepeatExample">
+        <div class="row">
+            <div class="col-xs-6 col-md-3" id="imagen-id-{{image.id}}" ng-repeat="image in images">
+                <a href="#" class="thumbnail">
+                    <img alt="{{image.title}}" ng-src="images/{{image.name}}">
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<h6>El código generado:</h6>
+
+<pre class="prettyprint ng-non-bindable">&lt;div ng-controller=&quot;ImagenesCtrl&quot; class=&quot;ng-scope&quot;&gt;<br/>	&lt;ul class=&quot;thumbnails&quot;&gt;<br/>		&lt;!-- ngRepeat: imagen in app_images --&gt;<br/>		&lt;li id=&quot;imagen-id-1&quot; ng-repeat=&quot;imagen in app_images&quot; class=&quot;span4 ng-scope&quot;&gt;<br/>			&lt;a href=&quot;#&quot; class=&quot;thumbnail&quot;&gt;<br/>				&lt;img alt=&quot;Imagen 1&quot; src=&quot;/img/1.png&quot;&gt;<br/>			&lt;/a&gt;<br/>		&lt;/li&gt;<br/>		&lt;li id=&quot;imagen-id-2&quot; ng-repeat=&quot;imagen in app_images&quot; class=&quot;span4 ng-scope&quot;&gt;<br/>			&lt;a href=&quot;#&quot; class=&quot;thumbnail&quot;&gt;<br/>				&lt;img alt=&quot;Imagen 2&quot; src=&quot;/img/2.png&quot;&gt;<br/>			&lt;/a&gt;<br/>		&lt;/li&gt;<br/>		&lt;li id=&quot;imagen-id-3&quot; ng-repeat=&quot;imagen in app_images&quot; class=&quot;span4 ng-scope&quot;&gt;<br/>			&lt;a href=&quot;#&quot; class=&quot;thumbnail&quot;&gt;<br/>				&lt;img alt=&quot;Imagen 3&quot; src=&quot;/img/3.png&quot;&gt;<br/>			&lt;/a&gt;<br/>		&lt;/li&gt;<br/>	&lt;/ul&gt;<br/>&lt;/div&gt;</pre>

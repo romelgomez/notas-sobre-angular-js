@@ -1,3 +1,10 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
 body {
     padding-top: 50px;
 }
@@ -30,3 +37,17 @@ body {
 .bs-callout-warning h4 { color: #aa6708 }
 .bs-callout-info { border-left-color: #1b809e }
 .bs-callout-info h4 { color: #1b809e }
+
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
