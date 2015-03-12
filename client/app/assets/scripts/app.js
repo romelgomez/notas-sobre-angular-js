@@ -106,28 +106,28 @@ angular.module('routes',['ui.router','Task'])
         $stateProvider
             .state('home',{
                 url:'/',
-                templateUrl:'views/home.html'
+                templateUrl:'assets/partials/home.html'
             })
             .state('about',{
                 url:'/about',
-                templateUrl:'views/about.html'
+                templateUrl:'assets/partials/about.html'
             })
             .state('contact',{
                 url:'/contact',
-                templateUrl:'views/contact.html'
+                templateUrl:'assets/partials/contact.html'
             })
             .state('gettingStarted',{
                 url:'/getting-started',
-                templateUrl:'views/getting-started.html'
+                templateUrl:'assets/partials/getting-started.html'
             })
             .state('ngRepeatExample',{
                 url:'/ng-repeat-example',
-                templateUrl:'views/ng-repeat-example.html',
+                templateUrl:'assets/partials/ng-repeat-example.html',
                 controller:'ngRepeatExample'
             })
             .state('toDoExample',{
                 url:'/to-do-example',
-                templateUrl:'views/to-do-example.html',
+                templateUrl:'assets/partials/to-do-example.html',
                 controller:'TasksController'
             });
 
