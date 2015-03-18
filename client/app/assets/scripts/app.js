@@ -1,20 +1,20 @@
 'use strict';
 
-angular.module("Task",['angular-underscore/filters'])
+angular.module('Task',['angular-underscore/filters'])
     .provider('tasks',function(){
 
         var tasks = [
-            {task:"Aprender Angular",   status:false},
-            {task:"Aprender GoLang",    status:false},
-            {task:"Aprender Git",       status:false},
-            {task:"Aprender Yeoman",    status:true}
+            {task:'Aprender Angular',   status:false},
+            {task:'Aprender GoLang',    status:false},
+            {task:'Aprender Git',       status:false},
+            {task:'Aprender Yeoman',    status:true}
         ];
 
         return {
             $get: function(){
                 return {
                     'add':function(task){
-                        tasks.push({"task":task,"status":false});
+                        tasks.push({'task':task,'status':false});
                     },
                     'get': function () {
                         return tasks;
@@ -52,12 +52,12 @@ angular.module("Task",['angular-underscore/filters'])
                     'hasValidLength': function () {
 //                        return false |
                     }
-                }
+                };
             }
-        }
+        };
 
     })
-    .controller("TasksController",['$scope','$log','tasks',function($scope,$log,tasks){
+    .controller('TasksController',['$scope','$log','tasks',function($scope,$log,tasks){
 
         $scope.tasks = {
             'task':'',
@@ -70,7 +70,7 @@ angular.module("Task",['angular-underscore/filters'])
                 return tasks.get();
             },
             'left':function(){
-                return tasks.left()
+                return tasks.left();
             },
             'length':function(){
                 return tasks.length();
@@ -80,7 +80,7 @@ angular.module("Task",['angular-underscore/filters'])
                 return tasks.delete();
             },
             'changeAllStatus':function(status){
-                tasks.changeAllStatus(status)
+                tasks.changeAllStatus(status);
             }
         };
 
@@ -137,23 +137,53 @@ angular.module('routes',['ui.router','Task'])
         $scope.images = [
             {
                 id:1,
-                title:"Imagen 1",
-                name:"1.png"
+                title:'Imagen 1',
+                name:'1.png'
             },
             {
                 id:2,
-                title:"Imagen 2",
-                name:"2.png"
+                title:'Imagen 2',
+                name:'2.png'
             },
             {
                 id:3,
-                title:"Imagen 3",
-                name:"3.png"
+                title:'Imagen 3',
+                name:'3.png'
             }
         ];
 
     }]);
 
-angular.module('app',['routes']);
+angular.module('directives',[])
+    .directive('myDirective',[function(){
+        return {
+            restrict:'E',
+            templateUrl: 'my-template.html'
+        };
+    }])
+    .directive('elementDirective',['$log',function($log){
+        return {
+            restrict:'E',
+            template: '<div class="alert alert-info" > Element directive with replace property undefined</div>',
+            link:function(scope,el,attrs){
+                $log.log(el.html());
+                $log.log(attrs.someAttr);
+            }
+        };
+    }])
+    .directive('elementDirectiveRemplace',['$log',function($log){
+        return {
+            restrict:'E',
+            replace:true,
+            template: '<div class="alert alert-info" > Element directive with replace property set to true</div>',
+            link:function(scope,el,attrs){
+                $log.log(el.html());
+                $log.log(attrs.someAttr);
+            }
+        };
+    }]);
+
+
+angular.module('app',['routes','directives']);
 
 //prettyPrint();

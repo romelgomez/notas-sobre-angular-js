@@ -1,4 +1,4 @@
-<h1 class="page-header">Tabla de contenido:</h1>
+<h2 class="page-header">Tabla de contenido:</h2>
 
 <dl>
     <dt><a ui-sref="gettingStarted">Empezando</a></dt>
@@ -7,3 +7,42 @@
     <dt>Ejemplos:</dt>
     <dd><a ui-sref="toDoExample">Lista de tareas</a></dd>
 </dl>
+
+
+<script type="text/ng-template" id="my-template.html">
+    <div ng-repeat="num in [1,2,3,4]">
+        {{num}}
+    </div>
+</script>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Directivas:</h3>
+    </div>
+    <div class="panel-body">
+
+        <h3 class="page-header" >Building a simple element directive</h3>
+        <my-directive></my-directive>
+
+        <h3 class="page-header" >Working through the directive spectrum</h3>
+
+        <h4 class="page-header" >The element directive</h4>
+        <h5>The element directive with replace property undefined</h5>
+        <element-directive some-attr="myValue">
+            <div class="well well-sm">Element Directive Example</div>
+        </element-directive>
+
+        <h5>The element directive with replace property set true; (remplace:true)</h5>
+        <element-directive-remplace some-attr="myValue">
+            <div class="well well-sm">Element Directive Replace Example</div>
+        </element-directive-remplace>
+
+        <h4 class="page-header" >The attribute directive</h4>
+
+
+
+    </div>
+</div>
+
+
