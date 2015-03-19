@@ -166,8 +166,9 @@ angular.module('directives',[])
             restrict:'E',
             template: '<div class="alert alert-info" > Element directive with replace property undefined</div>',
             link:function(scope,el,attrs){
-                $log.log(el.html());
-                $log.log(attrs.someAttr);
+              $log.log('*** Element directive with replace property undefined ***');
+              $log.log(el.html());
+              $log.log(attrs.someAttr);
             }
         };
     }])
@@ -177,10 +178,24 @@ angular.module('directives',[])
             replace:true,
             template: '<div class="alert alert-info" > Element directive with replace property set to true</div>',
             link:function(scope,el,attrs){
-                $log.log(el.html());
-                $log.log(attrs.someAttr);
+              $log.log('*** Element directive with replace property set to true ***');
+              $log.log(el.html());
+              $log.log(attrs.someAttr);
             }
         };
+    }])
+    .directive('attributeDirective',['$log',function($log){
+        return {
+          restrict:'A',
+          template: '<div class="alert alert-info" style="margin-bottom: 0;" > The Attribute directive template property content.</div>',
+          link:function(scope, el, attrs){
+              $log.log('*** The Attribute directive ***');
+              $log.log(el.html());
+              $log.log(attrs.someAttr);
+              $log.log(attrs.attributeDirective);
+          }
+        };
+
     }]);
 
 
