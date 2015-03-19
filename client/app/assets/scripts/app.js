@@ -196,6 +196,35 @@ angular.module('directives',[])
           }
         };
 
+    }])
+    .directive('classDirective',['$log',function($log){
+        return {
+          restrict:'C',
+          template: '<div class="alert alert-info" style="margin-bottom: 0;" > The class directive template.</div>',
+          link:function(scope, el, attrs){
+              $log.log('*** The class directive ***');
+              $log.log(el.html());
+              $log.log(el.hasClass('normal-class'));
+              $log.log(attrs.someAttr);
+              $log.log(attrs.classDirective);
+          }
+        };
+
+    }])
+    .directive('counter',['$log',function($log){
+        return {
+          restrict:'A',
+          link:function(scope, el, attrs){
+            $log.log('*** The counter directive ***');
+            var incr = parseInt(attrs.incr || 1), val = 0;
+            el.bind('click',function(){
+                el.html(val+=incr);
+            });
+
+            $log.log(el.html());
+          }
+        };
+
     }]);
 
 
