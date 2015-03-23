@@ -132,7 +132,7 @@ angular.module('routes',['ui.router','Task'])
             })
             .state('maximizing-angular-directives',{
                 url:'/maximizing-angular-directives',
-                templateUrl:'assets/partials/angular-web-application-development-cookbook/maximizing-angular-directives.html',
+                templateUrl:'assets/partials/angular-web-application-development-cookbook/maximizing-angular-directives.html'
             });
 
     }])
@@ -283,7 +283,9 @@ angular.module('interfacingDirectiveUsingIsolateScope',[])
     };
   }])
   .directive('iso',[function(){
-    return {};
+    return {
+      scope:{}
+    };
   }]);
 
 angular.module('interactionBetweenNestedDirectives',[]);
