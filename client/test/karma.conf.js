@@ -18,18 +18,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      // bower:js
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/angular/angular.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
-      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/google-code-prettify/bin/prettify.min.js',
-      'bower_components/underscore/underscore.js',
-      'bower_components/angular-underscore/angular-underscore.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      // endbower
-      'app/scripts/**/*.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/angular/angular.js',
+      'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/bootstrap/dist/js/bootstrap.js',
+      'node_modules/underscore/underscore.js',
+      'node_modules/angular-mocks/angular-mocks.js',
+      'app/assets/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],

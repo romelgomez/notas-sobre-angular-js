@@ -1,6 +1,11 @@
 'use strict';
 
-angular.module('Task',['angular-underscore/filters'])
+angular.module('underscore', [])
+  .factory('_', function() {
+    return window._; // assumes underscore has already been loaded on the page
+  });
+
+angular.module('Task',['underscore'])
     .provider('tasks',function(){
 
         var tasks = [
