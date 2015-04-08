@@ -282,20 +282,117 @@ angular.module('likingDirectives',[])
 
 angular.module('interfacingDirectiveUsingIsolateScope',[])
   .controller('IsolateScopeController',['$scope','$log',function($scope,$log){
-    $scope.outerval = 'myData';
-    $scope.func = function(){
-      $log.log('invoked');
+    $scope.controllerValue = 'myData';
+    $scope.controllerMethod = function (){
+      $log.log('This is controller method called front iso3 directive');
+    };
+
+  }])
+  .directive('iso',['$log',function($log){
+    return {
+      scope:{
+        'readOnlyIsolateScopeValue':'@attrValue'
+      },
+      link:function(scope){
+        $log.log('*** Interfacing Directive Using Isolate Scope ***');
+
+
+        $log.log(scope.readOnlyIsolateScopeValue);
+
+      }
     };
   }])
-  .directive('iso',[function(){
+  .directive('iso2',['$log',function($log){
     return {
-      scope:{}
+      scope:{
+        'bindingFrontTheParentScope':'=attrValue'
+      },
+      link:function(scope){
+        $log.log('*** Interfacing Directive Using Isolate Scope ***');
+
+
+        $log.log(scope.bindingFrontTheParentScope);
+
+      }
+    };
+  }])
+  .directive('iso3',['$log',function($log){
+    return {
+      scope:{
+        'methodFrontTheParentScope':'&attrValue'
+      },
+      link:function(scope){
+        $log.log('*** Interfacing Directive Using Isolate Scope ***');
+
+        scope.methodFrontTheParentScope();
+      }
     };
   }]);
 
-angular.module('interactionBetweenNestedDirectives',[]);
+angular.module('interactionBetweenNestedDirectives',[])
+  .directive('parentDirective',['$log',function($log){
+    return {
+      controller: function(){
+        this.identify = function(){
+          $log.log('Parent!');
+        }
+      }
+    }
+  }])
+  .directive('siblingDirective',['$log',function($log){
+    return {
+      controller: function(){
+        this.identify = function(){
+          $log.log('sibling!');
+        }
+      }
+    }
+  }])
+  .directive('childDirective',['$log',function($log){
+    return {
+      require: ['^parentDirective','^siblingDirective'],
+      link:function(scope,el,attrs,ctrls){
+        $log.log('*** Interaction Between Nested Directives ***');
 
-angular.module('optionalNestedDirectiveControllers',[]);
+
+        ctrls[0].identify();
+        ctrls[1].identify();
+      }
+    }
+  }]);
+
+angular.module('optionalNestedDirectiveControllers',[])
+  .directive('parentDirective2',['$log',function($log){
+    return {
+      controller: function(){
+        this.identify = function(){
+          $log.log('Parent!');
+        }
+      }
+    }
+  }])
+  .directive('siblingDirective2',['$log',function($log){
+    return {
+      controller: function(){
+        this.identify = function(){
+          $log.log('sibling!');
+        }
+      }
+    }
+  }])
+  .directive('childDirective2',['$log',function($log){
+    return {
+      require: ['^parentDirective2','^siblingDirective2','^?missingDirective'],
+      link:function(scope,el,attrs,ctrls){
+        $log.log('*** Optional Nested Directive Controllers ***');
+
+        ctrls[0].identify();
+        ctrls[1].identify();
+        $log.log(ctrls[2]);
+
+      }
+    }
+  }]);
 
 angular.module('directiveScopeInheritance',[]);
 

@@ -72,18 +72,39 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Interfacing with a directive using isolate scope</h3>
+        <h3 class="panel-title">Interaction Between Nested Directives</h3>
       </div>
       <div class="panel-body">
         <div ng-controller="IsolateScopeController">
-          - outerval var valuer  front IsolateScopeController: {{outerval}};
 
+          <div iso data-attr-value="{{controllerValue}}">ISO directive</div>
+          <div data-iso-3 data-attr-value="controllerMethod()">ISO3 directive</div>
 
-          <div iso>ISO directive space</div>
         </div>
       </div>
     </div>
 
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Interaction Between Nested Directives</h3>
+      </div>
+      <div class="panel-body">
+        <div data-parent-directive >parentDirective
+          <div data-child-directive data-sibling-directive >Child Directive and Sibling Directive</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Optional Nested Directive Controllers</h3>
+      </div>
+      <div class="panel-body">
+        <div data-parent-directive-2 >parentDirective2
+          <div data-child-directive-2 data-sibling-directive-2 >Child Directive and Sibling Directive</div>
+        </div>
+      </div>
+    </div>
 
 
   </div>
