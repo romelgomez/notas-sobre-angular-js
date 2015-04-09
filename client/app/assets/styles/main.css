@@ -51,3 +51,19 @@ body {
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
+
+form.ng-pristine {
+    color: darkgray;
+}
+
+input.ng-pristine {
+    color: darkgray;
+}
+
+form.ng-dirty {
+    color: #000000;
+}
+
+input.ng-dirty {
+    color: #000000;
+}

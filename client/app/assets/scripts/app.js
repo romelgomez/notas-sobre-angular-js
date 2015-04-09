@@ -423,6 +423,23 @@ angular.module('maximizingAngularDirectives',
 angular.module('angular-web-application-development-cookbook',['maximizingAngularDirectives']);
 
 
-angular.module('app',['routes','angular-web-application-development-cookbook']);
+angular.module('FormModule',[])
+    .controller('TestController',['$scope','$log',function($scope,$log){
+
+        $scope.user = {
+            'name':'romel',
+            'lastName':'gomez'
+        };
+
+
+//        $scope.user.name        = 'romel javier';
+//        $scope.data.lastName    = 'Gomez Herrera';
+
+//        $scope.userName = $scope.userForm.name;
+
+
+    }]);
+
+angular.module('app',['routes','angular-web-application-development-cookbook','FormModule']);
 
 //prettyPrint();
