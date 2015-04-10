@@ -1,0 +1,42 @@
+<script type="text/ng-template" id="my-template.html">
+    <div ng-repeat="num in [1,2,3,4]">
+        {{num}}
+    </div>
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Directivas</h3>
+    </div>
+    <div class="panel-body">
+
+        <h3>Construyendo una Simple directiva</h3>
+
+        <p>Una simple directiva se construye al definir un objeto con un conjunto de propiedades que determinará su comportamiento, este objeto es retornado por la función .directive().</p>
+
+        <simple-directive></simple-directive>
+
+        <h3>ngRepeat</h3>
+
+        <blockquote>
+            <p style="font-size: 14px;">Usado para iterar sobre un array.</p>
+        </blockquote>
+
+        <div class="well well-small">
+            <div ng-controller="NgRepeatController">
+                <div class="row">
+                    <div class="col-xs-6 col-md-3" id="imagen-id-{{image.id}}" ng-repeat="image in images">
+                        <a href="#" class="thumbnail">
+                            <img alt="{{image.title}}" ng-src="assets/images/{{image.name}}">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <gist id="7ad8770760bb9375c76a"></gist>
+
+
+    </div>
+</div>

@@ -16,19 +16,20 @@
   </head>
   <body ng-app="app">
 
-    <div ng-include="'assets/partials/pages/index/browseHappy.html'"></div>
+    <div ng-include="'assets/partials/index.html/browseHappy.html'"></div>
 
-    <div ng-include="'assets/partials/pages/index/nav.html'"></div>
+    <div ng-include="'assets/partials/index.html/nav.html'"></div>
 
     <div id="content" class="container-fluid content" data-ui-view></div>
 
-    <div ng-include="'assets/partials/pages/index/footer.html'"></div>
+    <div ng-include="'assets/partials/index.html/footer.html'"></div>
 
-    <div ng-include="'assets/partials/pages/index/googleAnalytics.html'"></div>
+    <div ng-include="'assets/partials/index.html/googleAnalytics.html'"></div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-gist/angular-gist.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <!--<script src="node_modules/angular-new-router/dist/router.es5.js"></script>-->
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
