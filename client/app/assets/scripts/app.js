@@ -156,7 +156,35 @@ angular.module('routes',['ui.router'])
 
 
 
-angular.module('forms',[]);
+angular.module('forms',['ngMessages','restangular','jsonFormatter'])
+    .factory('UsersService',['Restangular',function(Restangular){
+        return {
+            GET:function(){
+
+            },
+            POST:function(){
+
+            },
+            DELETE:function(){
+
+            },
+            UPDATE :function(){
+
+            }
+        }
+    }])
+    .controller('UsersController',['$scope','$log',function($scope,$log){
+
+        $scope.post = function(){
+
+            if($scope.userForm.$valid){
+                $log.log('Send HTTP request');
+                $log.log('$scope.user', $scope.user);
+            }
+
+        };
+
+    }]);
 
 
 angular.module('directives',[])
@@ -190,7 +218,7 @@ angular.module('directives',[])
 
 
 
-angular.module('app',['routes','gist','directives','task']);
+angular.module('app',['routes','gist','directives','forms','task']);
 
 
 

@@ -8,13 +8,13 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
-    <!--<link rel="stylesheet" href="bower_components/google-code-prettify/bin/prettify.min.css" />-->
+    <link rel="stylesheet" href="node_modules/jsonformatter/dist/json-formatter.css" />
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="assets/styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="app">
+  <body ng-app="app" data-ng-strict-di>
 
     <div ng-include="'assets/partials/index.html/browseHappy.html'"></div>
 
@@ -30,6 +30,10 @@
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-gist/angular-gist.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-highlightjs/src/angular-highlightjs.js"></script>
+    <script src="node_modules/restangular/dist/restangular.js"></script>
+    <script src="node_modules/jsonformatter/dist/json-formatter.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <!--<script src="node_modules/angular-new-router/dist/router.es5.js"></script>-->
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
