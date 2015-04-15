@@ -154,10 +154,10 @@ angular.module('routes',['ui.router'])
 
     }]);
 
+// Restangular
 
-
-angular.module('forms',['ngMessages','restangular','jsonFormatter'])
-    .factory('UsersService',['Restangular',function(Restangular){
+angular.module('forms',['ngMessages','restangular','uuid'])
+    .factory('UsersService',[function(){
         return {
             GET:function(){
 
@@ -171,18 +171,52 @@ angular.module('forms',['ngMessages','restangular','jsonFormatter'])
             UPDATE :function(){
 
             }
-        }
+        };
     }])
-    .controller('UsersController',['$scope','$log',function($scope,$log){
+    .factory('UserMockService',['$log','rfc4122',function($log,rfc4122){
+        var users = [];
+
+        return {
+            GET:function(){
+                return users;
+            },
+            POST:function(user){
+                user.uuid = rfc4122.v4();
+                users.push(user);
+            },
+            DELETE:function(){
+            },
+            UPDATE:function(){
+
+            }
+        };
+    }])
+    .controller('UsersController',['$scope','$log','UserMockService',function($scope,$log,UserMockService){
+
+        var original = angular.copy($scope.user = {
+            name: '',
+            lastName: '',
+            email: ''
+        });
 
         $scope.post = function(){
-
             if($scope.userForm.$valid){
-                $log.log('Send HTTP request');
-                $log.log('$scope.user', $scope.user);
-            }
+                UserMockService.POST($scope.user);
 
+                $scope.reset();
+            }
         };
+
+        $scope.get = function(){
+            return UserMockService.GET();
+        };
+
+        $scope.reset = function(){
+            $scope.user = angular.copy(original);
+            $scope.userForm.$setUntouched();
+            $scope.userForm.$setPristine();
+        };
+
 
     }]);
 
