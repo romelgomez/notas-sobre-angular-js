@@ -25,3 +25,45 @@ describe('directives', function() {
     });
 
 });
+
+describe('',function(){
+    var spy = jasmine.createSpy();
+    beforeEach(function(done){
+        var asynchronousFunc = function(callback){
+            setTimeout(callback,0);
+        };
+        var callback = function(){
+            spy();
+            done();
+        };
+        asynchronousFunc(callback);
+    });
+    it('',function(){
+        expect(spy).toHaveBeenCalled();
+    });
+});
+
+describe('Asynchronous calls in Karma',function(){
+
+   var spy = jasmine.createSpy();
+
+   beforeEach(function(done){
+
+      var asynchonousFunc = function(callback){
+        setTimeout(callback,0);
+      };
+
+      var callback = function(){
+        spy();
+        done();
+      };
+
+      asynchonousFunc(callback);
+
+   });
+
+   it('expect spy() to have been called',function(){
+       expect(spy).toHaveBeenCalled();
+   });
+
+});

@@ -157,9 +157,13 @@ angular.module('routes',['ui.router'])
 // Restangular
 
 angular.module('forms',['ngMessages','restangular','uuid'])
-    .factory('UsersService',[function(){
+    .factory('UsersService',['Restangular','$log',function(Restangular,$log){
+
+        var users = Restangular.all('users');
+
         return {
             GET:function(){
+                users.getList();
 
             },
             POST:function(){
