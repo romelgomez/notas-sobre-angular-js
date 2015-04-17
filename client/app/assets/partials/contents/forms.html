@@ -6,6 +6,9 @@
 
         <section ng-controller="UsersController">
 
+            <button class="btn btn-primary" ng-click="testPost()">Test Post</button>
+            <hr>
+
             <div class="alert alert-danger" ng-show="userForm.$submitted && userForm.$error.required">
 
                 <div data-ng-messages="userForm.$submitted && userForm.name.$error" class="text-danger">

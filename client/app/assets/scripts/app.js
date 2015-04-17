@@ -195,7 +195,7 @@ angular.module('forms',['ngMessages','restangular','uuid'])
             }
         };
     }])
-    .controller('UsersController',['$scope','$log','UserMockService',function($scope,$log,UserMockService){
+    .controller('UsersController',['$scope','$log','UserMockService','Restangular',function($scope,$log,UserMockService,Restangular){
 
         var original = angular.copy($scope.user = {
             name: '',
@@ -220,6 +220,23 @@ angular.module('forms',['ngMessages','restangular','uuid'])
             $scope.userForm.$setUntouched();
             $scope.userForm.$setPristine();
         };
+
+
+//        /api/v2
+//        http://api.tumblr.com/v2/blog/citriccomics.tumblr.com/posts/text?api_key={key}
+        
+        var users = Restangular.allUrl('server');
+        $scope.testPost = function(){
+            var data = {
+                name:'romel',
+                lastName:'gomez'
+            };
+
+            users.post(data);
+        };
+
+
+
 
 
     }]);
