@@ -6,6 +6,10 @@
 
         <section ng-controller="UsersController">
 
+          <button class="btn btn-default" ng-click="testRest()">Test Rest</button>
+
+          <hr>
+
             <div class="alert alert-danger" ng-show="userForm.$submitted && userForm.$error.required">
 
                 <div data-ng-messages="userForm.$submitted && userForm.name.$error" class="text-danger">
@@ -68,7 +72,7 @@
 
         <hr>
 
-        <section style="display: none;">
+        <section>
             <h3>Lista de tareas</h3>
 
             <blockquote>
