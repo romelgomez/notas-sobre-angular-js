@@ -28,6 +28,11 @@
             <form name="userForm" novalidate="" ng-submit="post()">
 
                 <div class="form-group">
+                    <label>Tipo de Estudio</label>
+                    <select name="specialty"  ng-model="user.studyType" required ng-options="o as o for o in studies" class="form-control" placeholder="Ingrese su cédula de identidad" ></select>
+                </div>
+
+                <div class="form-group">
                     <label>Nombres</label>
                     <input type="text" name="name" ng-model="user.name" required ng-minlength="3" class="form-control" placeholder="Ingrese sus nombres"  >
                 </div>
@@ -46,6 +51,8 @@
                     <label>Matrícula</label>
                     <input type="number" ng-minlength="3" ng-maxlength="3" name="registration" ng-model="user.registration" required class="form-control" placeholder="Eje: 052" >
                 </div>
+
+
 
                 <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -88,18 +95,16 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <p class="text-center"><b>
-                        Pregrado
-                        Postgrado
-                        Maestría
-                        Doctorado</b>
-                    </p>
+
+                    <p class="text-center"><b><span  ng-bind="user.studyType | uppercase"></span></b></p>
+
+                    <br>
 
                     <p>
-                        Se certifica que el (la) alumno (a): <b><span ng-bind="user.name | capitalize"></span> <span ng-bind="user.lastName | capitalize"></span></b>.
-                        Cédula de identidad: <b><span ng-bind="user.identityCard"></span></b>
-                        Matrícula: <b><span ng-bind="user.registration"></span></b>
-                        culminó la especialidad: <b></b>
+                        Se certifica que el (la) alumno (a): <b><span ng-bind="user.name | capitalize"></span></b> <span ng-if="!user.name" >__________</span> <b><span ng-bind="user.lastName | capitalize"></span></b> <span ng-if="!user.lastName" >__________</span>,
+                        Cédula de Identidad: <b><span ng-bind="user.identityCard"></span></b> <span ng-if="!user.identityCard" >__________</span>,
+                        Matrícula: <b><span ng-bind="user.registration"></span></b> <span ng-if="!user.registration" >_____</span>,
+                        culminó la especialidad: <span ng-if="!user.studyType" >__________</span><b></b>
                         para la presente fecha se encuentra <b>SOLVENTE</b> con la Unidad de Biblioteca.
                     </p>
 

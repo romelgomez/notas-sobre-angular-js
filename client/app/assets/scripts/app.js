@@ -228,7 +228,24 @@ angular.module('forms',['ngMessages','restangular','uuid'])
 
 
     }])
-    .controller('SolvencyController',[function(){
+    .controller('SolvencyController',['$scope',function($scope){
+
+        $scope.user = {
+            studyType:'Pregrado'
+        };
+
+        $scope.studies = [
+            'Pregrado',
+            'Postgrado',
+            'Maestría',
+            'Doctorado'
+        ];
+
+        $scope.specialties = [
+            'Informatica',
+            'Fisíca',
+            'Matematica',
+        ]
 
     }])
     .filter('capitalize', function() {
