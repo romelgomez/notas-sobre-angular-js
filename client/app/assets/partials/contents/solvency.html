@@ -1,0 +1,127 @@
+<section ng-controller="SolvencyController">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Generar Solvencia de Biblioteca</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="alert alert-danger" ng-show="userForm.$submitted && userForm.$error.required">
+
+                <div data-ng-messages="solvencyForm.$submitted && userForm.name.$error" class="text-danger">
+                    <div data-ng-message="required">
+                        - The <b>name</b> is required
+                    </div>
+                    <div data-ng-message="minlength" >
+                        - The <b>name</b> is too short
+                    </div>
+                </div>
+
+                <div data-ng-messages="userForm.$submitted && userForm.lastName.$error" class="text-danger">
+                    <div data-ng-message="required" >
+                        - The <b>last name</b> is required
+                    </div>
+                </div>
+
+            </div>
+
+            <form name="userForm" novalidate="" ng-submit="post()">
+
+                <div class="form-group">
+                    <label>Nombres</label>
+                    <input type="text" name="name" ng-model="user.name" required ng-minlength="3" class="form-control" placeholder="Ingrese sus nombres"  >
+                </div>
+
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <input type="text" name="lastName" ng-model="user.lastName" required class="form-control" placeholder="Ingrese sus apellidos" >
+                </div>
+
+                <div class="form-group">
+                    <label>Cédula de identidad</label>
+                    <input type="number" name="identityCard" ng-model="user.identityCard" required class="form-control" placeholder="Ingrese su cédula de identidad" >
+                </div>
+
+                <div class="form-group">
+                    <label>Matrícula</label>
+                    <input type="number" ng-minlength="3" ng-maxlength="3" name="registration" ng-model="user.registration" required class="form-control" placeholder="Eje: 052" >
+                </div>
+
+                <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+
+            <br>
+
+            <!--<pre ng-bind="get() | json"></pre>-->
+
+            <!--<pre ng-bind="userForm | json"></pre>-->
+
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Solvencia</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-2">
+                    <img ng-src="assets/images/upel/upel.png" class="img-responsive" >
+                </div>
+                <div class="col-md-8">
+                    <p class="text-center"><b>REPÚBLICA BOLIVARIANA DE VENEZUELA</b></p>
+                    <p class="text-center"><b>UNIVERSIDAD PEDAGÓGICA EXPERIMENTAL LIBERTADOR</b></p>
+                    <p class="text-center"><b>INSTITUTO PEDAGOGICO DE MATURIN</b></p>
+                    <p class="text-center"><b>SUBDIRECCION DE EXTENSION</b></p>
+                    <p class="text-center"><b>BIBLIOTECA “ANDRÉS ELOY BLANCO”</b></p>
+                    <p class="text-center"><b>MATURÍN EDO. MONAGAS.</b></p>
+                    <p class="text-center"><b>SOLVENCIA</b></p>
+                </div>
+                <div class="col-md-2">
+                    <img ng-src="assets/images/upel/ipm.png" class="img-responsive" >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center"><b>
+                        Pregrado
+                        Postgrado
+                        Maestría
+                        Doctorado</b>
+                    </p>
+
+                    <p>
+                        Se certifica que el (la) alumno (a): <b><span ng-bind="user.name | capitalize"></span> <span ng-bind="user.lastName | capitalize"></span></b>.
+                        Cédula de identidad: <b><span ng-bind="user.identityCard"></span></b>
+                        Matrícula: <b><span ng-bind="user.registration"></span></b>
+                        culminó la especialidad: <b></b>
+                        para la presente fecha se encuentra <b>SOLVENTE</b> con la Unidad de Biblioteca.
+                    </p>
+
+                    <p class="text-center">Coordinadora de Biblioteca</p>
+
+                    <p class="text-center">SELLO BIBLIOTECA CENTRAL</p>
+
+                    <p class="text-center">Maturín, ______ de ______ de 20___</p>
+
+                    <p>Nota: Tiene validez de 30 días continuos.</p>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+</section>

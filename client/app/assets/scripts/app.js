@@ -133,24 +133,12 @@ angular.module('routes',['ui.router'])
             });
 
         $stateProvider
-            .state('ngRepeatExample',{
-                url:'/ng-repeat-example',
-                templateUrl:'assets/partials/directives/ng-repeat-example.html',
-                controller:'ngRepeatExample'
-            })
-            .state('toDoExample',{
-                url:'/to-do-example',
-                templateUrl:'assets/partials/examples/to-do-example.html',
-                controller:'TasksController'
-            })
-            .state('maximizing-angular-directives',{
-                url:'/maximizing-angular-directives',
-                templateUrl:'assets/partials/angular-web-application-development-cookbook/maximizing-angular-directives.html'
-            })
-            .state('gettingStarted',{
-                url:'/getting-started',
-                templateUrl:'assets/partials/getting-started/getting-started.html'
+            .state('solvency',{
+                url:'/solvency',
+                templateUrl:'assets/partials/contents/solvency.html'
             });
+
+
 
     }]);
 
@@ -239,7 +227,15 @@ angular.module('forms',['ngMessages','restangular','uuid'])
 
 
 
-    }]);
+    }])
+    .controller('SolvencyController',[function(){
+
+    }])
+    .filter('capitalize', function() {
+        return function(input, all) {
+            return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
+        }
+    });
 
 
 angular.module('directives',[])
