@@ -8,7 +8,7 @@
 
             <div class="alert alert-danger" ng-show="userForm.$submitted && userForm.$error.required">
 
-                <div data-ng-messages="solvencyForm.$submitted && userForm.name.$error" class="text-danger">
+                <div data-ng-messages="userForm.$submitted && userForm.name.$error" class="text-danger">
                     <div data-ng-message="required">
                         - The <b>name</b> is required
                     </div>
@@ -29,7 +29,14 @@
 
                 <div class="form-group">
                     <label>Tipo de Estudio</label>
-                    <select name="specialty"  ng-model="user.studyType" required ng-options="o as o for o in studies" class="form-control" placeholder="Ingrese su cédula de identidad" ></select>
+                    <select name="study"  data-ng-model="user.study" required ng-options="study for (study,specialty) in studies" class="form-control"></select>
+                </div>
+
+                <div class="form-group">
+                    <label>Especialidad</label>
+                    <select name="specialty"  data-ng-model="user.specialty" data-ng-disabled="!user.study" required ng-options="specialty for specialty in user.study" class="form-control">
+                        <option value="">- Seleccione -</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -49,7 +56,7 @@
 
                 <div class="form-group">
                     <label>Matrícula</label>
-                    <input type="number" ng-minlength="3" ng-maxlength="3" name="registration" ng-model="user.registration" required class="form-control" placeholder="Eje: 052" >
+                    <input type="tel" ng-minlength="3" ng-maxlength="3" name="registration" ng-model="user.registration" required class="form-control" placeholder="Eje: 052" >
                 </div>
 
 
@@ -75,11 +82,12 @@
         </div>
         <div class="panel-body">
 
+
             <div class="row">
-                <div class="col-md-2">
-                    <img ng-src="assets/images/upel/upel.png" class="img-responsive" >
+                <div class="col-xs-2 col-sm-2">
+                    <img ng-src="assets/images/upel/upel.png" class="img-responsive"  >
                 </div>
-                <div class="col-md-8">
+                <div class="col-xs-8 col-sm-8">
                     <p class="text-center"><b>REPÚBLICA BOLIVARIANA DE VENEZUELA</b></p>
                     <p class="text-center"><b>UNIVERSIDAD PEDAGÓGICA EXPERIMENTAL LIBERTADOR</b></p>
                     <p class="text-center"><b>INSTITUTO PEDAGOGICO DE MATURIN</b></p>
@@ -88,15 +96,24 @@
                     <p class="text-center"><b>MATURÍN EDO. MONAGAS.</b></p>
                     <p class="text-center"><b>SOLVENCIA</b></p>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2 col-sm-2">
                     <img ng-src="assets/images/upel/ipm.png" class="img-responsive" >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-2">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
 
-                    <p class="text-center"><b><span  ng-bind="user.studyType | uppercase"></span></b></p>
+                    <p class="text-center"><b><span  ng-bind="user.study | uppercase"></span></b></p>
 
                     <br>
 
@@ -104,25 +121,39 @@
                         Se certifica que el (la) alumno (a): <b><span ng-bind="user.name | capitalize"></span></b> <span ng-if="!user.name" >__________</span> <b><span ng-bind="user.lastName | capitalize"></span></b> <span ng-if="!user.lastName" >__________</span>,
                         Cédula de Identidad: <b><span ng-bind="user.identityCard"></span></b> <span ng-if="!user.identityCard" >__________</span>,
                         Matrícula: <b><span ng-bind="user.registration"></span></b> <span ng-if="!user.registration" >_____</span>,
-                        culminó la especialidad: <span ng-if="!user.studyType" >__________</span><b></b>
+                        culminó la especialidad: <span ng-if="true" >__________</span><b></b>
                         para la presente fecha se encuentra <b>SOLVENTE</b> con la Unidad de Biblioteca.
                     </p>
 
-                    <p class="text-center">Coordinadora de Biblioteca</p>
+                    <br>
+
+                    <p class="text-center">FIRMA DEL FUNCIONARIO DE BIBLIOTECA</p>
+
+                    <br>
 
                     <p class="text-center">SELLO BIBLIOTECA CENTRAL</p>
 
-                    <p class="text-center">Maturín, ______ de ______ de 20___</p>
+                    <br>
 
-                    <p>Nota: Tiene validez de 30 días continuos.</p>
+                    <p class="text-center">Maturín, ______ de ________ de 200__</p>
+
+                    <p>Nota: Va sin enmienda.</p>
 
                 </div>
             </div>
 
+            {{ user | json }}
 
 
-
-
+            <select ng-model="model_estado" ng-options="estado for (estado, municipios) in ubicacion">
+                <option value="">- Seleccione -</option>
+            </select>
+            <select ng-model="model_municipio" ng-disabled="!model_estado" ng-options="municipio for (municipio, parroquias) in model_estado">
+                <option value="">- Seleccione -</option>
+            </select>
+            <select ng-model="model_parroquia" ng-disabled="!model_estado || !model_municipio" ng-options="parroquia for parroquia in model_municipio">
+                <option value="">- Seleccione -</option>
+            </select>
 
 
 
