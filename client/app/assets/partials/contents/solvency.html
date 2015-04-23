@@ -29,12 +29,12 @@
 
                 <div class="form-group">
                     <label>Tipo de Estudio</label>
-                    <select name="study"  data-ng-model="user.study" required ng-options="study for (study,specialty) in studies" class="form-control"></select>
+                    <select name="study"  data-ng-model="user.study" required ng-options="obj.study for obj in objects" class="form-control"></select>
                 </div>
 
                 <div class="form-group">
                     <label>Especialidad</label>
-                    <select name="specialty"  data-ng-model="user.specialty" data-ng-disabled="!user.study" required ng-options="specialty for specialty in user.study" class="form-control">
+                    <select name="specialty"  data-ng-model="user.specialty" data-ng-disabled="!user.study" required ng-options="label for label in user.study.specialties" class="form-control">
                         <option value="">- Seleccione -</option>
                     </select>
                 </div>
@@ -67,6 +67,9 @@
             </form>
 
             <br>
+
+            {{ user | json }}
+
 
             <!--<pre ng-bind="get() | json"></pre>-->
 
@@ -113,7 +116,7 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <p class="text-center"><b><span  ng-bind="user.study | uppercase"></span></b></p>
+                    <p class="text-center"><b><span  ng-bind="user.study.study | uppercase"></span></b></p>
 
                     <br>
 
@@ -142,18 +145,17 @@
                 </div>
             </div>
 
-            {{ user | json }}
 
 
-            <select ng-model="model_estado" ng-options="estado for (estado, municipios) in ubicacion">
-                <option value="">- Seleccione -</option>
-            </select>
-            <select ng-model="model_municipio" ng-disabled="!model_estado" ng-options="municipio for (municipio, parroquias) in model_estado">
-                <option value="">- Seleccione -</option>
-            </select>
-            <select ng-model="model_parroquia" ng-disabled="!model_estado || !model_municipio" ng-options="parroquia for parroquia in model_municipio">
-                <option value="">- Seleccione -</option>
-            </select>
+            <!--<select ng-model="model_estado" ng-options="estado for (estado, municipios) in ubicacion">-->
+                <!--<option value="">- Seleccione -</option>-->
+            <!--</select>-->
+            <!--<select ng-model="model_municipio" ng-disabled="!model_estado" ng-options="municipio for (municipio, parroquias) in model_estado">-->
+                <!--<option value="">- Seleccione -</option>-->
+            <!--</select>-->
+            <!--<select ng-model="model_parroquia" ng-disabled="!model_estado || !model_municipio" ng-options="parroquia for parroquia in model_municipio">-->
+                <!--<option value="">- Seleccione -</option>-->
+            <!--</select>-->
 
 
 

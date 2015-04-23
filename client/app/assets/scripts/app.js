@@ -233,16 +233,9 @@ angular.module('forms',['ngMessages','restangular','uuid'])
     }])
     .controller('SolvencyController',['$scope',function($scope) {
 
-        $scope.user = {
-            study: 'Pregrado'
-        };
-
-        $scope.studies = [
-            'Pregrado',
-            'Postgrado',
-            'Maestría',
-            'Doctorado'
-        ];
+//        $scope.user = {
+//            study: 'Pregrado'
+//        };
 
         $scope.ubicacion = {
             'Dtto. Capital': {
@@ -254,7 +247,84 @@ angular.module('forms',['ngMessages','restangular','uuid'])
             }
         };
 
-        $scope.studies = {
+//        for array data sources:
+
+//        label for value in array
+//        select as label for value in array
+//        label group by group for value in array
+//        label disable when disable for value in array
+//        label group by group for value in array track by trackexpr
+//        label disable when disable for value in array track by trackexpr
+//        label for value in array | orderBy:orderexpr track by trackexpr (for including a filter with track by)
+
+//        # current
+//        study for (study,specialty) in studies
+//        specialty for specialty in user.specialty['user.study']
+
+//        # when is studies was one array
+//        o         as o        for o       in  studies
+//        select    as label    for value   in  array
+
+//        for object data sources:
+
+//        label for (key , value) in object
+//        select as label for (key , value) in object
+//        label group by group for (key, value) in object
+//        label disable when disable for (key, value) in object
+//        select as label group by group for (key, value) in object
+//        select as label disable when disable for (key, value) in object
+
+        // color.name for color in colors
+        // obj.study for obj in objects
+        // obj.specialties for obj in
+
+        // obj.study        for obj in objects
+        // label for label in user.study.specialties
+
+        $scope.objects = [
+            {
+                'study':'Pregrado',
+                'specialties':[
+                    'Biología',
+                    'Física',
+                    'Química',
+                    'Matemática',
+                    'Ciencias de la Tierra',
+                    'Geografía e Historia',
+                    'Educación Física',
+                    'Educación Integral',
+                    'Educación Comercial',
+                    'Educación Especial',
+                    'Educación Preescolar',
+                    'Informática',
+                    'Ingles',
+                    'Lengua y Literatura'
+                ]
+            },
+            {
+                'study':'Maestría',
+                'specialties':[
+                    'MAESTRÍA EN EDUCACIÓN MENCIÓN EDUCACIÓN SUPERIOR',
+                    'MAESTRÍA EN EDUCACIÓN MENCIÓN GERENCIA EDUCACIONAL',
+                    'MAESTRÍA EN EDUCACIÓN MENCIÓN ENSEÑANZA DE LA MATEMÁTICA',
+                    'MAESTRÍA EN EDUCACIÓN MENCIÓN ENSEÑANZA DE LA GEOHISTORIA',
+                    'MAESTRÍA EN EDUCACIÓN MENCIÓN ENSEÑANZA DE LA EDUCACIÓN FÍSICA',
+                    'MAESTRÍA EN LINGÜÍSTICA',
+                    'MAESTRÍA EN LITERATURA LATINOAMERICANA',
+                    'MAESTRÍA EN ENSEÑANZA DEL INGLÉS COMO LENGUA EXTRANJERA',
+                    'MAESTRÍA EN EDUCACIÓN AMBIENTAL'
+                ]
+            }
+        ];
+
+//        $scope.studies = [
+//            'Pregrado',
+//            'Postgrado',
+//            'Maestría',
+//            'Doctorado'
+//        ];
+
+        $scope.specialty = {
             'Pregrado':[
                 'Biología',
                 'Física',
