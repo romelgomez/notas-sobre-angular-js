@@ -29,7 +29,7 @@
 
                 <div class="form-group">
                     <label>Tipo de Estudio</label>
-                    <select name="study"  data-ng-model="user.study" required ng-options="obj.study for obj in objects" class="form-control"></select>
+                    <select name="study"  data-ng-model="user.study" required ng-options="obj.study for obj in studies" class="form-control"></select>
                 </div>
 
                 <div class="form-group">
@@ -124,7 +124,7 @@
                         Se certifica que el (la) alumno (a): <b><span ng-bind="user.name | capitalize"></span></b> <span ng-if="!user.name" >__________</span> <b><span ng-bind="user.lastName | capitalize"></span></b> <span ng-if="!user.lastName" >__________</span>,
                         Cédula de Identidad: <b><span ng-bind="user.identityCard"></span></b> <span ng-if="!user.identityCard" >__________</span>,
                         Matrícula: <b><span ng-bind="user.registration"></span></b> <span ng-if="!user.registration" >_____</span>,
-                        culminó la especialidad: <span ng-if="true" >__________</span><b></b>
+                        culminó la especialidad: <span ng-if="!user.specialty" >__________</span><b><span ng-bind="user.specialty"></span></b>
                         para la presente fecha se encuentra <b>SOLVENTE</b> con la Unidad de Biblioteca.
                     </p>
 
