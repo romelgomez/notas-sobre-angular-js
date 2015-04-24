@@ -236,6 +236,7 @@ angular.module('forms',['ngMessages','restangular','uuid'])
         $scope.studies = [
             {
                 'study':'Pregrado',
+                'prefix':'la especialidad de',
                 'specialties':[
                     'Biología',
                     'Física',
@@ -255,6 +256,7 @@ angular.module('forms',['ngMessages','restangular','uuid'])
             },
             {
                 'study':'Maestría',
+                'prefix':'la',
                 'specialties':[
                     'MAESTRÍA EN EDUCACIÓN MENCIÓN EDUCACIÓN SUPERIOR',
                     'MAESTRÍA EN EDUCACIÓN MENCIÓN GERENCIA EDUCACIONAL',
@@ -269,6 +271,7 @@ angular.module('forms',['ngMessages','restangular','uuid'])
             },
             {
                 'study':'Especializaciones',
+                'prefix':'la',
                 'specialties':[
                     'ESPECIALIZACIÓN EN EDUCACIÓN BÁSICA',
                     'ESPECIALIZACIÓN EN PROCESOS DIDÁCTICOS PARA EL NIVEL EDUCATIVO BÁSICO',
@@ -280,17 +283,34 @@ angular.module('forms',['ngMessages','restangular','uuid'])
             },
             {
                 'study':'Doctorado',
+                'prefix':'el',
                 'specialties':[
                     'DOCTORADO EN EDUCACIÓN'
                 ]
             }
         ];
 
+        var original = angular.copy($scope.user = {
+            study: $scope.studies[0],
+            specialty:null,
+            name: '',
+            lastName: '',
+            identityCard:null,
+            registration:'',
+            date:new Date()
+        });
 
-        $scope.user = {
-            study: $scope.studies[0]
+        $scope.reset = function(){
+            $scope.user = angular.copy(original);
+            $scope.userForm.$setUntouched();
+            $scope.userForm.$setPristine();
         };
 
+        $scope.print = function(){
+            if($scope.userForm.$valid){
+                window.print();
+            }
+        };
 
     }])
     .filter('capitalize', function() {
